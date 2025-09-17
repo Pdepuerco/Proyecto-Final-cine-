@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illojuan butanero</title>
+    <link rel="icon" type="image/x-icon" href="illojuan butanero.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("don pollo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        @keyframes slideInFromTop {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeInScale {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .barra-superior {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1001;
+            animation: slideInFromTop 0.8s ease-out forwards;
+        }
+
+        .menu-navegacion a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+        .menu-navegacion a:hover {
+            color: #ff0000;
+            transform: translateY(-3px);
+        }
+        .menu-navegacion a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #ff0000;
+            transition: width 0.3s ease-out;
+        }
+        .menu-navegacion a:hover::after {
+            width: 100%;
+        }
+
+        .titulo-pagina {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .titulo-pagina:hover {
+            color: #ffcccc;
+            text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.8);
+        }
+
+        .contenedor-casillas {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            padding-top: 150px;
+            flex-wrap: wrap;
+        }
+
+        .casilla {
+            max-width: 200px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInScale 0.6s ease-out forwards;
+        }
+        .casilla:nth-child(1) { animation-delay: 0.5s; }
+        .casilla:nth-child(2) { animation-delay: 0.7s; }
+        .casilla:nth-child(3) { animation-delay: 0.9s; } /* Nuevo delay para la tercera casilla */
+
+        .casilla:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .casilla img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 3px solid #f0f0f0;
+            transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .filtro-opacidad:hover {
+            filter: grayscale(100%);
+            opacity: 0.8;
+        }
+        
+        .casilla h1 {
+            font-size: 1.2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .boton-flotante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .boton-flotante button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .boton-flotante button:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 20px #ff0000;
+        }
+        .boton-flotante button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-100%) rotate(45deg);
+            transition: transform 0.5s ease;
+        }
+        .boton-flotante button:hover::before {
+            transform: translateY(100%) rotate(45deg);
+        }
+
+        .menu-flotante {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background-color: #222222;
+            border-radius: 10px;
+            padding: 5px 0;
+            width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            pointer-events: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .menu-flotante a {
+            display: flex;
+            align-items: center;
+            color: #f0f0f0;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            font-size: 1em;
+            text-align: left;
+        }
+        .menu-flotante a:hover {
+            background-color: #ff0000;
+            color: white;
+            border-radius: 5px;
+            transform: translateX(5px);
+        }
+        .mostrar-menu {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="barra-superior">
+        <div class="menu-navegacion">
+            <a href="#">Inicio</a>
+            <a href="#">Acerca de</a>
+            <a href="#">Contacto</a>
+        </div>
+        <div class="titulo-pagina">Illojuan butanero</div>
+    </div>
+
+    <div class="contenedor-casillas">
+        <div class="casilla">
+            <img class="filtro-opacidad" src="illojuan butanero.jpg" alt="Illojuan Butanero">
+            <h1>Illojuan Mason</h1>
+        </div>
+        <div class="casilla">
+            <img class="filtro-opacidad" src="Knekro.webp" alt="knekro">
+            <h1>Knekro mason</h1>
+        </div>
+        <div class="casilla">
+            <a href="pagina_en_blanco.html">
+                <img class="filtro-opacidad" src="chococrispi.png" alt="chococrispi">
+            </a>
+            <h1>Chococrispi</h1>
+        </div>
+    </div>
+
+    <div class="boton-flotante">
+        <button id="menu-btn">+</button>
+        <div class="menu-flotante" id="menu-opciones">
+            <a href="#">Opción de perfil</a>
+            <a href="#">Configuración</a>
+            <a href="#">Ayuda</a>
+            <a href="#">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <script>
+        const botonMenu = document.getElementById('menu-btn');
+        const menuOpciones = document.getElementById('menu-opciones');
+        botonMenu.addEventListener('click', (event) => {
+            event.stopPropagation();
+            menuOpciones.classList.toggle('mostrar-menu');
+        });
+        document.addEventListener('click', (event) => {
+            if (!botonMenu.contains(event.target) && !menuOpciones.contains(event.target)) {
+                menuOpciones.classList.remove('mostrar-menu');
+            }
+        });
+    </script>
+</body>
+</html>
