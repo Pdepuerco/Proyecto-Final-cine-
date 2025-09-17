@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illojuan butanero</title>
+    <title>Página Nueva</title>
     <link rel="icon" type="image/x-icon" href="illojuan butanero.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -97,10 +97,10 @@
             right: 20px;
         }
 
-        /* Botón flotante */
+        /* Botón flotante corregido */
         .boton-flotante {
             position: fixed;
-            bottom: 30px;
+            bottom: 30px; /* Ajustado para estar a la altura correcta */
             right: 30px;
             z-index: 1000;
         }
@@ -133,6 +133,9 @@
             background: rgba(255, 255, 255, 0.3);
             transform: translateY(-100%) rotate(45deg);
             transition: transform 0.5s ease;
+        }
+        .boton-flotante button:hover::before {
+            transform: translateY(100%) rotate(45deg);
         }
 
         /* Menú flotante */
@@ -181,17 +184,17 @@
 
     <div class="barra-superior">
         <div class="menu-navegacion">
-            <a href="index.html">Inicio</a>
+            <a href="index 2.html">Inicio</a>
             <a href="#">Acerca de</a>
             <a href="#">Contacto</a>
         </div>
-        <div class="titulo-pagina">Illojuan butanero</div>
+        <div class="titulo-pagina">Página Nueva</div>
     </div>
 
     <!-- Contenedor para las imágenes en el orden solicitado: Shinobu, MuertesKNY, Akaza -->
     <div class="contenedor-imagenes">
-        <img src="MuerteShinobu.jpg" alt="Muerte Shinobu">
-        <img src="MuertesKNY.jpg" alt="Muertes KNY">
+        <img src="MuerteShinobu.JPG" alt="Muerte Shinobu">
+        <img src="MuertesKNY.JPG" alt="Muertes KNY">
         <img class="imagen-akaza" src="AkazaDeath.png" alt="Akaza Death">
     </div>
 
@@ -224,7 +227,3 @@
     </script>
 </body>
 </html>
-
-
-
-
