@@ -103,7 +103,7 @@
         }
         .casilla:nth-child(1) { animation-delay: 0.5s; }
         .casilla:nth-child(2) { animation-delay: 0.7s; }
-        .casilla:nth-child(3) { animation-delay: 0.9s; } /* Nuevo delay para la tercera casilla */
+        .casilla:nth-child(3) { animation-delay: 0.9s; }
 
         .casilla:hover {
             transform: translateY(-10px);
@@ -210,6 +210,24 @@
             visibility: visible;
             pointer-events: auto;
         }
+
+        /* Agregar los GIFs en las esquinas y centrados */
+        .gif-esquina {
+            position: fixed;
+            width: 200px; /* Tamaño más grande */
+            height: auto;
+            z-index: 999;
+            top: 50%; /* Centrado vertical */
+            transform: translateY(-50%); /* Centrado exacto */
+        }
+
+        .gif-izquierda {
+            left: 20px; /* Esquina izquierda */
+        }
+
+        .gif-derecha {
+            right: 20px; /* Esquina derecha */
+        }
     </style>
 </head>
 <body>
@@ -249,6 +267,10 @@
             <a href="#">Cerrar Sesión</a>
         </div>
     </div>
+
+    <!-- GIFs en las esquinas y centrados -->
+    <img src="tenna.gif" alt="Tenna GIF" class="gif-esquina gif-izquierda">
+    <img src="tennadance.gif" alt="Tenna Dance GIF" class="gif-esquina gif-derecha">
 
     <script>
         const botonMenu = document.getElementById('menu-btn');
