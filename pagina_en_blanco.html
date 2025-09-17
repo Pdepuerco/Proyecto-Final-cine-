@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Nueva</title> <link rel="icon" type="image/x-icon" href="illojuan butanero.ico">
+    <title>Illojuan butanero</title>
+    <link rel="icon" type="image/x-icon" href="illojuan butanero.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -17,6 +18,10 @@
             font-family: 'Roboto', sans-serif;
             color: #ffffff;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
 
         @keyframes slideInFromTop {
@@ -40,7 +45,6 @@
             width: 100%;
             box-sizing: border-box;
             z-index: 1001;
-            animation: slideInFromTop 0.8s ease-out forwards;
         }
 
         .menu-navegacion a {
@@ -55,44 +59,45 @@
             color: #ff0000;
             transform: translateY(-3px);
         }
-        .menu-navegacion a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0;
-            height: 2px;
-            background-color: #ff0000;
-            transition: width 0.3s ease-out;
-        }
-        .menu-navegacion a:hover::after {
-            width: 100%;
-        }
-
         .titulo-pagina {
             font-size: 1.5em;
             font-weight: bold;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-        .titulo-pagina:hover {
-            color: #ffcccc;
-            text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.8);
         }
 
-        /* Estas reglas de estilo ya no son necesarias si no hay casillas
-           .contenedor-casillas, .casilla, etc., pero las dejo por si las quieres reutilizar */
-        .contenedor-casillas { /* Lo he dejado como un contenedor general para tu nuevo contenido */
+        /* Contenedor para las imágenes */
+        .contenedor-imagenes {
             display: flex;
             justify-content: center;
-            align-items: center; /* Centra verticalmente el contenido */
-            padding-top: 150px; /* Espacio para la barra superior */
-            min-height: calc(100vh - 150px - 100px); /* Ajusta la altura para el contenido principal */
-            flex-direction: column; /* Para apilar el contenido verticalmente */
-            text-align: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 200px; /* Ajuste del margen superior para moverlas hacia abajo */
         }
 
+        .contenedor-imagenes img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Estilos para los GIFs */
+        .gif-izquierda, .gif-derecha {
+            position: fixed;
+            top: 50%; /* Centrado vertical */
+            z-index: 100;
+            width: 150px; /* Tamaño del GIF */
+            height: auto;
+            transform: translateY(-50%); /* Centrado exacto */
+        }
+        .gif-izquierda {
+            left: 20px;
+        }
+        .gif-derecha {
+            right: 20px;
+        }
+
+        /* Botón flotante */
         .boton-flotante {
             position: fixed;
             bottom: 30px;
@@ -112,7 +117,6 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
         .boton-flotante button:hover {
             transform: scale(1.1) rotate(90deg);
@@ -129,10 +133,8 @@
             transform: translateY(-100%) rotate(45deg);
             transition: transform 0.5s ease;
         }
-        .boton-flotante button:hover::before {
-            transform: translateY(100%) rotate(45deg);
-        }
 
+        /* Menú flotante */
         .menu-flotante {
             position: absolute;
             bottom: 80px;
@@ -172,44 +174,24 @@
             pointer-events: auto;
         }
 
-        /* Estilos para el nuevo contenido */
-        .contenido-nuevo {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px 50px;
-            border-radius: 15px;
-            max-width: 800px;
-            margin: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        }
-        .contenido-nuevo h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #ff0000;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-        }
-        .contenido-nuevo p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
-
     </style>
 </head>
 <body>
-    
+
     <div class="barra-superior">
         <div class="menu-navegacion">
-            <a href="index.html">Inicio</a> <a href="#">Acerca de</a>
+            <a href="index 2.html">Inicio</a>
+            <a href="#">Acerca de</a>
             <a href="#">Contacto</a>
         </div>
-        <div class="titulo-pagina">Página Nueva</div> </div>
+        <div class="titulo-pagina">Página Nueva</div>
+    </div>
 
-    <div class="contenedor-casillas">
-        <div class="contenido-nuevo">
-            <h1>¡Bienvenido a tu nueva sección!</h1>
-            <p>Aquí puedes comenzar a añadir todo el contenido que desees: texto, más imágenes, videos, formularios, etc.</p>
-            <p>¡Este es tu espacio para crear!</p>
-        </div>
+    <!-- Contenedor para las imágenes en el orden solicitado: Shinobu, MuertesKNY, Akaza -->
+    <div class="contenedor-imagenes">
+        <img src="MuerteShinobu.JPG" alt="Muerte Shinobu">
+        <img src="MuertesKNY.JPG" alt="Muertes KNY">
+        <img class="imagen-akaza" src="AkazaDeath.png" alt="Akaza Death">
     </div>
 
     <div class="boton-flotante">
@@ -221,6 +203,10 @@
             <a href="#">Cerrar Sesión</a>
         </div>
     </div>
+
+    <!-- Los GIFs ahora están centrados verticalmente en la página -->
+    <img src="tenna.gif" alt="Tenna" class="gif-izquierda">
+    <img src="tennadance.gif" alt="Tenna Dance" class="gif-derecha">
 
     <script>
         const botonMenu = document.getElementById('menu-btn');
